@@ -25,6 +25,18 @@ public class Notebook_Testing {
         return shadowRootTwo;
     }
 
+    void Search_NoteBook(WebDriver driver,String ques) throws InterruptedException {
+        //Click into NoteBook
+        driver.findElement(By.cssSelector("#b-scopeListItem-notebook > a")).click();
+        sleep(1000);
+        //Send text into search box
+        Text_Area(driver).findElement(By.cssSelector("#searchbox")).sendKeys(ques);
+        sleep(1000);
+        //Click into submit
+        Submit_Button(driver).findElement(By.cssSelector("div > div > div > div.bottom-controls > div.bottom-right-controls > div.control.submit.notebook-alt > button")).click();
+        sleep(30000);
+    }
+    //Code in C++
     @Test(priority=1)
     void Code_In_C()  throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","D:\\Drivers\\ChromeDriver\\chromedriver.exe");
@@ -36,15 +48,12 @@ public class Notebook_Testing {
         //Go to the URL
         driver.get("https://copilot.microsoft.com/");
 
-        driver.findElement(By.cssSelector("#b-scopeListItem-notebook > a")).click();
-        sleep(1000);
-        Text_Area(driver).findElement(By.cssSelector("#searchbox")).sendKeys("Add two number in C++ code");
-        sleep(1000);
-        Submit_Button(driver).findElement(By.cssSelector("div > div > div > div.bottom-controls > div.bottom-right-controls > div.control.submit.notebook-alt > button")).click();
-        sleep(20000);
+        Search_NoteBook(driver,"Add two number in C++ code");
         driver.quit();
     }
-    @Test(priority=1)
+
+    //Code in Python
+    @Test(priority=2)
     void Code_In_Python()  throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","D:\\Drivers\\ChromeDriver\\chromedriver.exe");
         WebDriver driver= new ChromeDriver();
@@ -55,15 +64,12 @@ public class Notebook_Testing {
         //Go to the URL
         driver.get("https://copilot.microsoft.com/");
 
-        driver.findElement(By.cssSelector("#b-scopeListItem-notebook > a")).click();
-        sleep(1000);
-        Text_Area(driver).findElement(By.cssSelector("#searchbox")).sendKeys("Add two number in Python code");
-        sleep(1000);
-        Submit_Button(driver).findElement(By.cssSelector("div > div > div > div.bottom-controls > div.bottom-right-controls > div.control.submit.notebook-alt > button")).click();
-        sleep(20000);
+        Search_NoteBook(driver,"Add two number in Python code");
         driver.quit();
     }
-    @Test(priority=1)
+
+    //Code in Java
+    @Test(priority=3)
     void Code_In_Java()  throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","D:\\Drivers\\ChromeDriver\\chromedriver.exe");
         WebDriver driver= new ChromeDriver();
@@ -74,15 +80,12 @@ public class Notebook_Testing {
         //Go to the URL
         driver.get("https://copilot.microsoft.com/");
 
-        driver.findElement(By.cssSelector("#b-scopeListItem-notebook > a")).click();
-        sleep(1000);
-        Text_Area(driver).findElement(By.cssSelector("#searchbox")).sendKeys("Add two number in Java code");
-        sleep(1000);
-        Submit_Button(driver).findElement(By.cssSelector("div > div > div > div.bottom-controls > div.bottom-right-controls > div.control.submit.notebook-alt > button")).click();
-        sleep(20000);
+        Search_NoteBook(driver,"Add two number in Java code");
         driver.quit();
     }
-    @Test
+
+    //Explain Code
+    @Test(priority=4)
     void Poorly_Written_Code()  throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","D:\\Drivers\\ChromeDriver\\chromedriver.exe");
         WebDriver driver= new ChromeDriver();
@@ -92,18 +95,13 @@ public class Notebook_Testing {
 
         //Go to the URL
         driver.get("https://copilot.microsoft.com/");
-
-        driver.findElement(By.cssSelector("#b-scopeListItem-notebook > a")).click();
-        sleep(1000);
-        Text_Area(driver).findElement(By.cssSelector("#searchbox")).sendKeys("int mul(int a, int b) \n" +
+        //Search poorly written code and make it explain
+        Search_NoteBook(driver,"int mul(int a, int b) \n" +
                 "{ int product = 0; \n" +
                 "  for(int i=0;i<b;i++) \n" +
                 "    product += a; \n" +
                 "  return product; \n" +
-                "} Explain");
-        sleep(1000);
-        Submit_Button(driver).findElement(By.cssSelector("div > div > div > div.bottom-controls > div.bottom-right-controls > div.control.submit.notebook-alt > button")).click();
-        sleep(20000);
+                "}\n Explain the code");
         driver.quit();
     }
 }
