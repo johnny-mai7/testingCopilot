@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/willi/IdeaProjects/Maven_Final_Copilot_Porject/src/test/java">
+        <classes>
+            <class name="Login"></class>
+            <class name="printInfo">
+            </class>
+            <class name="testingDesigner"></class>
+            <class name="Vacation_Function"></class>
+            <class name="Copilot_Button"></class>
+            <class name="testingFitnessTrainer"></class>
+            <class name="testingConversationStyles"></class>
+            <class name="Notebook_Testing"></class>
+
+
+        </classes>
+    </test>
+</suite>
